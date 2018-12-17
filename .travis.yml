@@ -1,39 +1,26 @@
 language: php
 
 php:
-- 5.6
-- 7.0
-- 7.1
-- 7.2
-
-global:
-- CI=true
-- CI_ENV=testing
-
-# Recommended by Travis support
-sudo: required
-dist: precise
+  - '5.6'
+  - '7.0'
+  - '7.1'
+  - '7.2'
 
 env:
-- DB=mysqli
-- DB=postgres
+  - DB=sqlite
 
-services:
-- mysql
-- postgresql
-
-script:
-- php vendor/bin/phpunit -v
+sqlite:
+  adapter: sqlite3
+  database: ':memory:'
+  timeout: 500
 
 before_install:
-#  - cp .env.example .env
-#  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
-- mysql -e "create database IF NOT EXISTS test;" -uroot;
-- mysql -e "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'test';" -uroot
-- psql -c 'create database test;' -U postgres
-
-#install: travis_retry composer install --no-interaction --no-scripts --prefer-source --no-suggest
+  # turn off XDebug
+  - phpenv config-rm xdebug.ini || return
 
 before_script:
-- composer install --prefer-source
-- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - cp .env.testing .env
+  - composer test --no-interaction
+
+script:
+  - vendor/bin/phpunit
