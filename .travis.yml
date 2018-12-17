@@ -19,7 +19,7 @@ before_install:
   - phpenv config-rm xdebug.ini || return
 
 before_script:
-  - cp .env.testing .env
+  - cp .env.example .env
   - composer test --no-interaction
 
 script:
