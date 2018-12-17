@@ -1,5 +1,7 @@
 # Aplikasi Sistem Manajemen Keuangan
 
+[![Build Status](https://travis-ci.org/bannipebriansyah/manajemen-keuangan.svg?branch=master)](https://travis-ci.org/bannipebriansyah/manajemen-keuangan)
+
 Aplikasi Sistem Manajemen Keuangan is a personal bookkeeping web application, built with Laravel 5.
 
 ## Objective
