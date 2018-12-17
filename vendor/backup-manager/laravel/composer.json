@@ -1,0 +1,47 @@
+{
+  "name": "backup-manager/laravel",
+  "description": "Database backup manager seamlessly integrated with Laravel 4 or 5 with user-definable procedures and support for S3, Dropbox, FTP, SFTP, and more.",
+  "authors": [
+    {
+      "name": "Shawn McCool",
+      "email": "shawn@heybigname.com",
+      "homepage": "http://heybigname.com/"
+    },
+    {
+      "name": "Mitchell van Wijngaarden",
+      "email": "mitchell@kooding.nl",
+      "homepage": "http://heybigname.com/"
+    }
+  ],
+  "require": {
+    "backup-manager/backup-manager": "^1.0",
+    "php": ">=5.5.0",
+    "symfony/process": "^2.0||^3.0||^4.0",
+    "illuminate/support": "^4.0||^5.0",
+    "illuminate/container": "^4.0||^5.0",
+    "illuminate/console": "^4.0||^5.0"
+  },
+  "require-dev": {
+    "mockery/mockery": "dev-master",
+    "satooshi/php-coveralls": "~0.6"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "BackupManager\\Laravel\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "BackupManager\\Laravel\\Laravel55ServiceProvider"
+      ]
+    }
+  },
+  "license": "MIT"
+}
