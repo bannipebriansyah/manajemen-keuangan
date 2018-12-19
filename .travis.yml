@@ -4,6 +4,7 @@ language: php
 
 # Versi php
 php:
+  - '7.1'
   - '7.2'
 
 # Brance yang digunakan
@@ -12,7 +13,7 @@ branches:
     - master # QA/Staging server
 
 services:
-  - docker
+  - mysql
 
 # install Environment di OS
 before_install:
