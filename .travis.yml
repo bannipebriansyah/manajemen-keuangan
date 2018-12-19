@@ -26,8 +26,15 @@ script:
 before_install:
 #  - cp .env.example .env
 #  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
+- cp .env.travis .env
+- composer self-update
+- composer install --dev --prefer-source --no-interaction
 - mysql -e "create database IF NOT EXISTS test;" -uroot;
 - mysql -e "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'test';" -uroot
+- php artisan key:generate
+- php artisan migrate:install --env=testing --no-interaction
+- travis_retry composer self-update
+- travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 - psql -c 'create database test;' -U postgres
 
 #install: travis_retry composer install --no-interaction --no-scripts --prefer-source --no-suggest
