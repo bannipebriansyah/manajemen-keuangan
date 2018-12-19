@@ -2,31 +2,36 @@ sudo: required
 dist: trusty
 language: php
 
+# Versi php
 php:
-- 7.2
+  - '7.1'
+  - '7.2'
+
+# Brance yang digunakan
+branches:
+  only:
+    - master # QA/Staging server
 
 services:
-- docker
+  - mysql
 
-cache:
-  directories:
-  - laravel
+# install Environment di OS
+before_install:
+  - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php -r "if (hash_file('sha384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php');"
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - composer install --no-interaction
+  - cp .env.travis .env
+  - php artisan key:generate
 
-notifications:
-  slack:
-    on_success: always
-    on_failure: always
-    on_start: always
-
+# Precompile
 before_script:
-- travis_retry composer self-update
-- travis_retry composer install --prefer-source --no-interaction --dev
-- cp .env.travis .env
-- composer self-update
-- composer clear-cache -vvv
-- composer install --no-interaction -vvv
-- composer dump-autoload -vvv
-- php artisan key:generate
+  - 
 
+# Main Execution (Build)
 script:
-- vendor/bin/phpunit
