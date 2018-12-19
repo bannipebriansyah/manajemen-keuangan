@@ -1,24 +1,12 @@
 language: php
 
 php:
-- 7.1
-- 7.2
-
-global:
-- CI=true
-- CI_ENV=testing
-
-# Recommended by Travis support
-sudo: required
-dist: precise
-
-env:
-- DB=mysqli
-- DB=postgres
+  - 7.1
+  - 7.2
 
 services:
-- mysql
-- postgresql
+  - mysql
+
 
 script:
 - php vendor/bin/phpunit -v
@@ -28,6 +16,7 @@ before_install:
 #  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
 - cp .env.travis .env
 - mysql -u root -e 'create database db_keuangan;'
+- composer dump-autoload
 - composer self-update
 - composer install --dev --prefer-source --no-interaction
 - mysql -e "create database IF NOT EXISTS test;" -uroot;
