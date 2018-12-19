@@ -12,14 +12,13 @@
 */
 
 Route::get('/', function () {
-	$about = \DB::table('about')->where('about_id',1)->first();
 	$services = \DB::table('services')->get();
 	$portofolio = \DB::table('portofolio')->where('portofolio_id',1)->first();
 	$testimoni = \DB::table('testimoni')->get();
 	$alamat = \DB::table('alamat')->where('alamat_id',1)->first();
 	$artikel = \DB::table('artikel')->limit(3)->get();
 
-    return view('main',compact('title','about','services','portofolio','testimoni','alamat','artikel'));
+    return view('main',compact('title','services','portofolio','testimoni','alamat','artikel'));
 });
 
 

@@ -90,9 +90,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <span class="sr-only">(current)</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  mr-3">
-                                        <a class="nav-link scroll" href="#about">about</a>
-                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link scroll" href="#services">Feature</a>
                                     </li>
@@ -169,24 +166,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
         </div>
-        <!-- //banner-bottom -->
-        <!-- about-->
-        <section class="wthree-row py-sm-5" id="about">
-            <div class="container py-md-5">
-                <div class="row abbot-main py-lg-5 py-4">
-                    <div class="col-lg-6 abbot-right">
-                        <span></span>
-                        <img src="{{asset('template/images/slide.png')}}" class="img-fluid" alt="" />
-                    </div>
-                    <div class="col-lg-6 about-text-grid">
-                        <h3 class="stat-title">about us
-                        </h3>
-                        {!! $about->keterangan !!}
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //about -->
         <!-- services -->
         <section class="services-w3sec py-5" id="services">
             <div class="container">
@@ -488,10 +467,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <li>
                                 <a href="#">
                                     <i class="fa fa-angle-double-right"></i>Home</a>
-                            </li>
-                            <li>
-                                <a href="#about" class="scroll">
-                                    <i class="fa fa-angle-double-right"></i>About</a>
                             </li>
                             <li>
                                 <a href="#services" class="scroll">
