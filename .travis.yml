@@ -28,7 +28,6 @@ before_install:
 #  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
 - cp .env.travis .env
 - composer self-update
-- composer install --dev --prefer-source --no-interaction
 - mysql -e "create database IF NOT EXISTS test;" -uroot;
 - mysql -e "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'test';" -uroot
 - php artisan key:generate
