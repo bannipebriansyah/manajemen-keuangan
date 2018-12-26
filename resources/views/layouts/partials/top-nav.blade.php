@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ route('home') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('Manajemen Keuangan.name', 'Manajemen Keuangan') }}
             </a>
         </div>
         <div class="nav navbar-nav" style="margin: 0;">
