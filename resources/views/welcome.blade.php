@@ -1,31 +1,98 @@
-@extends('layouts.guest')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('title', trans('app.welcome'))
+        <title>Laravel</title>
 
-@section('content')
-<div class="jumbotron">
-    <h1>{{ config('app.name', 'Laravel') }}</h1>
-    <p class="lead">ASMK Berguna untuk memudahkan anda dalam mengelola keuangan personal dan memberi gambaran dasar berapa keuntungan wirausaha Anda. </p>
-    <p><a class="btn btn-lg btn-success" href="{{ route('register') }}" role="button">Sign up today</a></p>
-</div>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-<div class="row marketing">
-    <div class="row">
-        <div class="col-lg-4">
-            <h4>Objective</h4>
-            <p>Easy bookkeeping for personal income and spending (amount of money).</p>
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Laravel
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-8">
-            <h4>Concept</h4>
-            <p>To aquire our objective, we need this features on the application:</p>
-            <ul>
-                <li>User can register.</li>
-                <li>User can see transaction history by date.</li>
-                <li>User add transactions for income and spending.</li>
-                <li>User can categorize the transaction.</li>
-                <li>User can see transaction summary on each month or a year.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-@endsection
+    </body>
+</html>

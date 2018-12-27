@@ -141,7 +141,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="carousel-item text-white">
                                         <h3 class="b-w3ltxt  text-capitalize mt-md-4">
                                             <span>Laporan</span> & Grafik</h3>
-                                        <p class="mt-2">Laporan Kas Harian, dan Tahunan tersedia lengkap. Bisa dicetak dalam format PDF</p>
+                                        <p class="mt-2">Laporan Kas Harian, dan Tahunan tersedia lengkap. Terdapat Fitur Grafik</p>
                                         <a class="btn btn-banner mt-md-3 mt-2 text-capitalize scroll" href="#services" role="button">LEARN MORE</a>
                                     </div>
                                     <!-- slider text -->
