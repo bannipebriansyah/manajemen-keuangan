@@ -10,15 +10,15 @@ ASMK adalah perangkat lunak untuk manejemen keuangan dari user berupa transaksi 
 3. Pengguna Tambahan Bisa Anda Buat Dengan Hak Aksesnya Masing-Masing.
 
 ## Cara Penginstalan
-$ cd manajemen-keuangan
-$ composer install
-$ cp .env.example .env
-$ php artisan key:generate
-Buat baru MySQL database untuk menjalankan aplikasi
-atur database pada file .env
-$ php artisan migrate
-$ php artisan serve
-Register akun baru
+1. $ cd manajemen-keuangan
+2. $ composer install
+3. $ cp .env.example .env
+4. $ php artisan key:generate
+5. Buat baru MySQL database untuk menjalankan aplikasi
+    atur database pada file .env
+6. $ php artisan migrate
+7. $ php artisan serve
+8. Register akun baru
 
 #### Server Requirements
 1. PHP 7.2 (and meet [Laravel 5.7 server requirements](https://laravel.com/docs/5.7#server-requirements)),
